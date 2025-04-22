@@ -54,6 +54,13 @@ jobs:
         id: validate
         run: terraform validate -no-color
 
+      - name: Download Terraform Plan
+        uses: actions/download-artifact@v3
+        if: github.event_name == 'pull_request'
+        with:
+          name: terraform-plan
+          path: ${{ env.WORKING_DIR }}/builds/
+
       - name: Terraform Plan
         id: plan
         run: |
