@@ -56,7 +56,6 @@ jobs:
 
       - name: Download Terraform Plan
         uses: actions/download-artifact@v3
-        if: github.event_name == 'pull_request'
         with:
           name: terraform-plan
           path: ${{ env.WORKING_DIR }}/builds/
