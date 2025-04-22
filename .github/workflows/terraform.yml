@@ -51,11 +51,17 @@ jobs:
         id: validate
         run: terraform validate -no-color
 
+      - name: Create tfvars file
+        run: |
+          cat > terraform.tfvars << EOF
+          aws_region = "${{ secrets.AWS_REGION }}"
+          EOF
+
       - name: Terraform Plan
         id: plan
         run: |
           mkdir -p builds
-          terraform plan -no-color -out=tfplan
+          terraform plan -var-file=terraform.tfvars -no-color -out=tfplan
           terraform show -json tfplan > builds/plan.json
         continue-on-error: true
 
