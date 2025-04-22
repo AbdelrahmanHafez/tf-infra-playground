@@ -10,3 +10,9 @@ This is a repository including a Terraform project that I'm creating just to act
 [ ] Use Assume Role to access the Terraform backend
 [ ] Migrate Backend on shared environment
 [ ] Migrate Lambdas on shared environment
+
+## Directory Structure
+infra/
+├── backend.tf
+├── main.tf
+├── variables.tf
