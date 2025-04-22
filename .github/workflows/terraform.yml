@@ -54,12 +54,6 @@ jobs:
         id: validate
         run: terraform validate -no-color
 
-      - name: Download Terraform Plan
-        uses: actions/download-artifact@v3
-        with:
-          name: terraform-plan
-          path: ${{ env.WORKING_DIR }}/builds/
-
       - name: Terraform Plan
         id: plan
         run: |
